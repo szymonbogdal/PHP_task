@@ -8,4 +8,7 @@ class ReportController
   public function __construct($db){
     $this->payment = new Payment($db);
   }
+  public function showOverPayments(){
+    return $this->payment->getOverpayments();
+  }
 }
