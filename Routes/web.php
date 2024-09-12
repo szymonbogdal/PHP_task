@@ -10,7 +10,9 @@ class Router
     $db = (new Database())->getConnection();
     $this->controller = new ReportController($db);
     $this->routes = [
-      "overpayments" => "showOverPayments"
+      "overpayments" => "showOverPayments",
+      "underpayments" => "showUnderPayments",
+      "unsettledinvoices" => "showUnselttledInvoices"
     ];
   }
 
