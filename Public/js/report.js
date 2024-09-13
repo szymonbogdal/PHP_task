@@ -26,6 +26,14 @@ export function updateTable(data, action){
     tableBody.appendChild(row);
   });
   updateTableHeaders(action);
+  const noRecordsMsg = document.getElementsByClassName('no-records-msg')[0];
+  const shouldDisplay = data.length === 0;
+  
+  if (shouldDisplay && noRecordsMsg.style.display !== "flex") {
+    noRecordsMsg.style.display = "flex";
+  } else if (!shouldDisplay && noRecordsMsg.style.display !== "none") {
+    noRecordsMsg.style.display = "none";
+  }
 }
 
 function updateTableHeaders(action){

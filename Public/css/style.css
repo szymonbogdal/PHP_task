@@ -96,3 +96,16 @@ table tbody tr:nth-of-type(even){
 table tbody tr:last-of-type{
   border-bottom: 0.2rem solid #3f37c9;
 }
+
+.no-records-msg{
+  display: none;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.2rem solid #3f37c9;
+  height: 5rem;
+  font-size: 1.2rem;
+}
+.no-records-msg p{
+  margin: 0;
+}

@@ -65,6 +65,9 @@ if($action){
        
       </tbody>
     </table>
+    <div class="no-records-msg">
+      <p>No records found.</p>
+    </div>
   </div>
 </body>
 </html>
