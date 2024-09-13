@@ -16,6 +16,7 @@ if($action){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="Public/js/main.js"></script>
   <link rel="stylesheet" href="Public/css/style.css">
   <title>Reports</title>
 </head>
@@ -61,41 +62,7 @@ if($action){
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Szymon</td>
-          <td>6000</td>
-          <td>2024-01-15</td>
-          <td>2024-02-15</td>
-          <td>$1500</td>
-        </tr>
-        <tr>
-          <td>Melissa</td>
-          <td>5150</td>
-          <td>2024-02-01</td>
-          <td>2024-03-01</td>
-          <td>$1200</td>
-        </tr>
-        <tr>
-          <td>John</td>
-          <td>7001</td>
-          <td>2024-03-10</td>
-          <td>2024-04-10</td>
-          <td>$1800</td>
-        </tr>
-        <tr>
-          <td>Anna</td>
-          <td>8202</td>
-          <td>2024-04-05</td>
-          <td>2024-05-05</td>
-          <td>$2200</td>
-        </tr>
-        <tr>
-          <td>James</td>
-          <td>9303</td>
-          <td>2024-05-20</td>
-          <td>2024-06-20</td>
-          <td>$2500</td>
-        </tr>
+       
       </tbody>
     </table>
   </div>
