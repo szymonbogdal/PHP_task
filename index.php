@@ -42,11 +42,11 @@ if($action){
         <input id="invoice-number"  data-column="invoice_number">
       </div>
       <div class="filter-item">
-        <label for="issued-at">Issued at</label>
+        <label for="issued-at">Issue date</label>
         <input id="issued-at"  data-column="issue_date">
       </div>
       <div class="filter-item">
-        <label for="due-at">Due at</label>
+        <label for="due-at">Due date</label>
         <input id="due-at"  data-column="due_date">
       </div>
     </div>
