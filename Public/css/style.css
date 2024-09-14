@@ -77,15 +77,20 @@ table{
 table thead tr{
   background-color: #3f37c9;
   color: #f8f9fa;
-  text-align: left;
+  text-align: center;
 }
 table th{
   font-size: 1.1rem;
   padding: 1rem 2rem;
+  cursor: pointer;
+}
+table th:hover{
+  background-color: #4361ee;
 }
 table td{
   font-size: 1rem;
   padding: 1rem 2rem;
+  text-align: center;
 }
 table tbody tr{
   border-bottom: 0.15rem solid #dee2e6;
