@@ -42,8 +42,8 @@ function updateTableHeaders(action){
   tableHead.innerHTML = `
     <th>Client name</th>
     <th>Invoice number</th>
-    <th>Issued at</th>
-    <th>Due at</th>
+    <th>Issue date</th>
+    <th>Due date</th>
     <th>Full amount</th>
   `;
 
