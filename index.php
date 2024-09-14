@@ -54,11 +54,7 @@ if($action){
     <table>
       <thead>
         <tr>
-          <th>Client name</th>
-          <th>Invoice number</th>
-          <th>Issued at</th>
-          <th>Due at</th>
-          <th>Full amount</th>
+
         </tr>
       </thead>
       <tbody>
