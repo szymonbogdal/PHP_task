@@ -119,11 +119,11 @@ class Payment
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $overpayments = [];
+    $underpayments = [];
     while($row = $result->fetch_assoc()){
-      $overpayments[] = $row;
+      $underpayments[] = $row;
     }
 
-    return $overpayments;
+    return $underpayments;
     }
 }
