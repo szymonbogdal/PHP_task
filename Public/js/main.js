@@ -10,6 +10,21 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   const buttons = document.querySelectorAll('button[data-action]');
   const filters = document.querySelectorAll('input[data-column]');
 
+  async function callApi(){
+    const data = await getData(currentAction, searchParams, sortParams);
+    const errorMsg =  document.getElementsByClassName('error-msg')[0];
+    if(data.error){
+      console.error(data.error);
+      errorMsg.style.display = "flex";      
+    }else{
+      if(errorMsg.style.display == "flex"){
+        errorMsg.style.display = "none"
+      }
+      updateTable(data, currentAction, sortParams);
+      createTableHeadertListener();
+    }
+  }
+  
   function createTableHeadertListener(){
     const tableHeaders = document.querySelectorAll('th[data-sort]');
     tableHeaders.forEach(th=>{
@@ -20,18 +35,12 @@ document.addEventListener("DOMContentLoaded", async ()=>{
           sortParams.sort_by = e.target.dataset.sort;
           sortParams.order_by = "ASC";
         }
-        const data = await getData(currentAction, searchParams, sortParams);
-        if(data){
-          updateTable(data, currentAction, sortParams);
-          createTableHeadertListener();
-        }
+        callApi();
       })
     })
   }
 
-  const initialData = await getData(currentAction, searchParams, sortParams);
-  updateTable(initialData, currentAction);
-  createTableHeadertListener();
+  callApi();
 
   buttons.forEach(button=>{
     button.addEventListener('click', async ()=>{
@@ -44,10 +53,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
       currentAction = button.dataset.action;
       sortParams = {sort_by: "issue_date", order_by: "ASC"};
       const data = await getData(currentAction, searchParams, sortParams);
-      if(data){
-        updateTable(data, currentAction, sortParams);
-        createTableHeadertListener();
-      }
+      callApi();
     })
   })
 
@@ -55,10 +61,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     searchParams[column] = value;
     sortParams = {sort_by: "issue_date", order_by: "ASC"};
     const data = await getData(currentAction, searchParams, sortParams);
-    if(data){
-      updateTable(data, currentAction, sortParams);
-      createTableHeadertListener();
-    }
+    callApi();
   }, 300);
 
   filters.forEach(filter=>{
