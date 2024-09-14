@@ -114,3 +114,18 @@ table tbody tr:last-of-type{
 .no-records-msg p{
   margin: 0;
 }
+
+.error-msg{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #c1121f;
+  height: 7rem;
+}
+.error-msg p{
+  color: #f8f9fa;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0;
+}
