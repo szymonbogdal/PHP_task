@@ -49,7 +49,14 @@ class Payment
     $query .= " 
     GROUP BY i.id 
     HAVING overpayment_amount > 0 
-    ORDER BY overpayment_amount DESC";
+    ";
+    
+    if(!empty($params['sort_by'])){
+      $query .= " ORDER BY ".$params['sort_by'];
+      if(!empty($params['order_by'])){
+        $query .= " ".$params['order_by'];
+      }
+    }
 
     $stmt = $this->db->prepare($query);
     if(!empty($values)){
@@ -109,7 +116,14 @@ class Payment
     $query .= " 
       GROUP BY i.id 
       HAVING underpayment_amount > 0
-      ORDER BY underpayment_amount DESC";
+      ";
+
+    if(!empty($params['sort_by'])){
+      $query .= " ORDER BY ".$params['sort_by'];
+      if(!empty($params['order_by'])){
+        $query .= " ".$params['order_by'];
+      }
+    }
 
     $stmt = $this->db->prepare($query);
     if(!empty($values)){
