@@ -13,14 +13,14 @@ class ReportController
   }
 
   public function showOverPayments(){
-    return $this->payment->getOverpayments();
+    return $this->payment->getOverpayments($_GET);
   }
 
   public function showUnderPayments(){
-    return $this->payment->getUnderpayments();
+    return $this->payment->getUnderpayments($_GET);
   }
 
   public function showUnselttledInvoices(){
-    return $this->invoice->getUnsettledInvoices();
+    return $this->invoice->getUnsettledInvoices($_GET);
   }
 }
