@@ -45,23 +45,26 @@ class Invoice
       $query .= " AND " . implode(" AND ", $conditions);
     }
 
+    if(!empty($params['sort_by'])){
+      $query .= " ORDER BY ".$params['sort_by'];
+      if(!empty($params['order_by'])){
+        $query .= " ".$params['order_by'];
+      }
+    }
 
-    $query .= " 
-      ORDER BY i.due_date";
+    $stmt = $this->db->prepare($query);
+    if(!empty($values)){
+      $types = str_repeat('s', count($values));
+      $stmt->bind_param($types, ...$values);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-  $stmt = $this->db->prepare($query);
-  if(!empty($values)){
-    $types = str_repeat('s', count($values));
-    $stmt->bind_param($types, ...$values);
-  }
-  $stmt->execute();
-  $result = $stmt->get_result();
+    $invocies = [];
+    while($row = $result->fetch_assoc()){
+      $invocies[] = $row;
+    }
 
-  $invocies = [];
-  while($row = $result->fetch_assoc()){
-    $invocies[] = $row;
-  }
-
-  return $invocies;
+    return $invocies;
   }
 }
