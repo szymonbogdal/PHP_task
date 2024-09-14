@@ -19,16 +19,20 @@ class Router
   public function dispatch($action) {
     header('Content-Type: application/json');
 
-    if(array_key_exists($action, $this->routes)){
-      $method = $this->routes[$action];
-      if(method_exists($this->controller, $method)){
-        $result = $this->controller->$method();
-        echo json_encode($result);
+    try{
+      if(array_key_exists($action, $this->routes)){
+        $method = $this->routes[$action];
+        if(method_exists($this->controller, $method)){
+          $result = $this->controller->$method();
+          echo json_encode($result);
+        }else{
+          echo json_encode(["error" => "Method $method does not exist"]);
+        }
       }else{
-        echo json_encode(["error" => "Method $method does not exist"]);
+        echo json_encode(["error" => "Action $action is not defined"]);
       }
-    }else{
-      echo json_encode(["error" => "Action $action is not defined"]);
+    }catch(Exception $e){
+      echo json_encode(["error" => $e->getMessage()]);
     }
   }
 }
