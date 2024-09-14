@@ -14,7 +14,7 @@ class Invoice
         i.total_amount AS invoice_total,
         c.name AS customer_name
       FROM invoices i
-      LEFT JOIN payments p ON i.id = p.id
+      LEFT JOIN payments p ON i.id = p.invoice_id
       JOIN customers c ON i.customer_id = c.id
       WHERE p.id IS NULL 
         AND i.due_date < CURDATE()
