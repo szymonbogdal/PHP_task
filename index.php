@@ -35,19 +35,19 @@ if($action){
     <div class="filters">
       <div class="filter-item">
         <label for="name">Client name</label>
-        <input id="name">
+        <input id="name" data-column="name">
       </div>
       <div class="filter-item">
         <label for="invoice-number">Invoice number</label>
-        <input id="invoice-number">
+        <input id="invoice-number"  data-column="invoice_number">
       </div>
       <div class="filter-item">
         <label for="issued-at">Issued at</label>
-        <input id="issued-at">
+        <input id="issued-at"  data-column="issue_date">
       </div>
       <div class="filter-item">
         <label for="due-at">Due at</label>
-        <input id="due-at">
+        <input id="due-at"  data-column="due_date">
       </div>
     </div>
 
