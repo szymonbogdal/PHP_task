@@ -53,16 +53,18 @@ if($action){
     <div class="error-msg">
       <p>Oops! Something went wrong. Please try refreshing the page.</p>
     </div>
-    <table>
-      <thead>
-        <tr>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
 
-        </tr>
-      </thead>
-      <tbody>
-       
-      </tbody>
-    </table>
+          </tr>
+        </thead>
+        <tbody>
+        
+        </tbody>
+      </table>
+    </div>
     <div class="no-records-msg">
       <p>No records found.</p>
     </div>
