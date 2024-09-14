@@ -7,8 +7,8 @@ export function updateTable(data, action){
     row.innerHTML = `
       <td>${item.customer_name || '-'}</td>
       <td>${item.invoice_number || '-'}</td>
-      <td>${item.issued_at || '-'}</td>
-      <td>${item.due_at || '-'}</td>
+      <td>${item.issue_date || '-'}</td>
+      <td>${item.due_date || '-'}</td>
       <td>${item.invoice_total || '-'}</td>
     `;
     if(action === 'overpayments'){
