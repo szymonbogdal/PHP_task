@@ -5,12 +5,33 @@ import { debounce } from "./utils.js";
 document.addEventListener("DOMContentLoaded", async ()=>{
   let currentAction = "overpayments";
   let searchParams = {};
-
-  const initialData = await getData(currentAction, searchParams);
-  updateTable(initialData, currentAction);
+  let sortParams = {sort_by: "issue_date", order_by: "ASC"};
   
   const buttons = document.querySelectorAll('button[data-action]');
   const filters = document.querySelectorAll('input[data-column]');
+
+  function createTableHeadertListener(){
+    const tableHeaders = document.querySelectorAll('th[data-sort]');
+    tableHeaders.forEach(th=>{
+      th.addEventListener('click', async (e)=>{
+        if(e.target.dataset.sort === sortParams.sort_by){
+          sortParams.order_by = sortParams.order_by === 'ASC' ? 'DESC':'ASC';
+        }else{
+          sortParams.sort_by = e.target.dataset.sort;
+          sortParams.order_by = "ASC";
+        }
+        const data = await getData(currentAction, searchParams, sortParams);
+        if(data){
+          updateTable(data, currentAction, sortParams);
+          createTableHeadertListener();
+        }
+      })
+    })
+  }
+
+  const initialData = await getData(currentAction, searchParams, sortParams);
+  updateTable(initialData, currentAction);
+  createTableHeadertListener();
 
   buttons.forEach(button=>{
     button.addEventListener('click', async ()=>{
@@ -21,18 +42,22 @@ document.addEventListener("DOMContentLoaded", async ()=>{
       button.classList.add('nav-active');
       
       currentAction = button.dataset.action;
-      const data = await getData(currentAction, searchParams);
+      sortParams = {sort_by: "issue_date", order_by: "ASC"};
+      const data = await getData(currentAction, searchParams, sortParams);
       if(data){
-        updateTable(data, currentAction);
+        updateTable(data, currentAction, sortParams);
+        createTableHeadertListener();
       }
     })
   })
 
   const debouncedSearch = debounce(async (column, value)=>{
     searchParams[column] = value;
-    const data = await getData(currentAction, searchParams);
+    sortParams = {sort_by: "issue_date", order_by: "ASC"};
+    const data = await getData(currentAction, searchParams, sortParams);
     if(data){
-      updateTable(data, currentAction);
+      updateTable(data, currentAction, sortParams);
+      createTableHeadertListener();
     }
   }, 300);
 
