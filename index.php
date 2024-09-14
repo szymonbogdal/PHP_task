@@ -50,7 +50,9 @@ if($action){
         <input id="due-at"  data-column="due_date">
       </div>
     </div>
-
+    <div class="error-msg">
+      <p>Oops! Something went wrong. Please try refreshing the page.</p>
+    </div>
     <table>
       <thead>
         <tr>
