@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", async ()=>{
         errorMsg.style.display = "none"
       }
       updateTable(data, currentAction, sortParams);
-      createTableHeadertListener();
+      createTableHeaderListener();
     }
   }
   
-  function createTableHeadertListener(){
+  function createTableHeaderListener(){
     const tableHeaders = document.querySelectorAll('th[data-sort]');
     tableHeaders.forEach(th=>{
       th.addEventListener('click', async (e)=>{
