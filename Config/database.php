@@ -17,12 +17,18 @@ class Database{
     $this->createDatabase();
     $this->conn->select_db($this->db);
 
-    $this->setupCustomersTable();
-    $this->setupInvoicesTable();
-    $this->setupInvoiceItemsTable();
-    $this->setupPaymentsTable();
-  }
 
+    if(!$this->tablesExist()){
+      $this->setupCustomersTable();
+      $this->setupInvoicesTable();
+      $this->setupInvoiceItemsTable();
+      $this->setupPaymentsTable();
+    }
+  }
+  private function tablesExist() {
+    $result = $this->conn->query("SHOW TABLES LIKE 'customers'");
+    return $result && $result->num_rows > 0;
+  }
   private function createDatabase(){
     $sql = "CREATE DATABASE IF NOT EXISTS $this->db";
     $this->conn->query($sql);
