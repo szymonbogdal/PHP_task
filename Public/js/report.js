@@ -9,17 +9,17 @@ export function updateTable(data, action){
       <td>${item.invoice_number || '-'}</td>
       <td>${item.issue_date || '-'}</td>
       <td>${item.due_date || '-'}</td>
-      <td>${item.invoice_total || '-'}</td>
+      <td>${formatCurrency(item.invoice_total) || '-'}</td>
     `;
     if(action === 'overpayments'){
       row.innerHTML += `
-        <td>${item.overpayment_amount}</td>
-        <td>${item.total_paid}</td>
+        <td>${formatCurrency(item.overpayment_amount)}</td>
+        <td>${formatCurrency(item.total_paid)}</td>
       `;
     }else if(action === 'underpayments'){
       row.innerHTML += `
-        <td>${item.underpayment_amount}</td>
-        <td>${item.total_paid}</td>
+        <td>${formatCurrency(item.underpayment_amount)}</td>
+        <td>${formatCurrency(item.total_paid)}</td>
       `;
     }
 
@@ -58,4 +58,11 @@ function updateTableHeaders(action){
       <th data-sort="total_paid">Total paid &#8597;</th>
     `;
   }
+}
+
+function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(amount);
 }
