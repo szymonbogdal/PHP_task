@@ -133,3 +133,9 @@ table tbody tr:last-of-type{
   font-size: 1.25rem;
   margin: 0;
 }
+
+@media (max-width: 920px) {
+  .nav-item {
+    width: 100%;
+  }
+}
